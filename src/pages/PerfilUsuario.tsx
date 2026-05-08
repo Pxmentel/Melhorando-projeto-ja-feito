@@ -222,9 +222,15 @@ export default function PerfilUsuario() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-center p-6 bg-gradient-card rounded-lg">
-                <div className="text-3xl font-bold text-primary mb-2">{recipesCount}</div>
-                <div className="text-muted-foreground">Receitas Criadas</div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="text-center p-6 bg-gradient-card rounded-lg">
+                  <div className="text-3xl font-bold text-primary mb-2">{recipesCount}</div>
+                  <div className="text-muted-foreground">Receitas Criadas</div>
+                </div>
+                <div className="text-center p-6 bg-gradient-card rounded-lg">
+                  <div className="text-3xl font-bold text-primary mb-2">{recipes.length}</div>
+                  <div className="text-muted-foreground">Total de Receitas</div>
+                </div>
               </div>
             </CardContent>
           </Card>
