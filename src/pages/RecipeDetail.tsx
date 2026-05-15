@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Clock, Users, Trash2, Edit } from "lucide-react";
+import RecipeComments from "@/components/RecipeComments";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -130,6 +131,11 @@ export default function RecipeDetail() {
               </div>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Comments */}
+        <div className="mt-8">
+          <RecipeComments recipeId={recipe.id} />
         </div>
 
         {/* Action Buttons */}
