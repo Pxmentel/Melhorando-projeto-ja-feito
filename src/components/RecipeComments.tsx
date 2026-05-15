@@ -124,12 +124,18 @@ export default function RecipeComments({ recipeId }: RecipeCommentsProps) {
       </CardHeader>
       <CardContent className="space-y-6">
         <form onSubmit={handleSubmit} className="space-y-3">
-          <Input
-            placeholder="Seu nome"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-            maxLength={50}
-          />
+          <div className="flex items-center gap-3">
+            <Avatar className="h-10 w-10">
+              {user.avatar && <AvatarImage src={user.avatar} alt={author} />}
+              <AvatarFallback>{getInitials(author)}</AvatarFallback>
+            </Avatar>
+            <Input
+              placeholder="Seu nome"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+              maxLength={50}
+            />
+          </div>
           <Textarea
             placeholder="Escreva seu comentário..."
             value={text}
@@ -156,6 +162,10 @@ export default function RecipeComments({ recipeId }: RecipeCommentsProps) {
                 className="border border-border rounded-lg p-4 bg-muted/30"
               >
                 <div className="flex items-start justify-between gap-3">
+                  <Avatar className="h-9 w-9">
+                    {c.avatar && <AvatarImage src={c.avatar} alt={c.author} />}
+                    <AvatarFallback>{getInitials(c.author)}</AvatarFallback>
+                  </Avatar>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="font-semibold text-recipe-text">
