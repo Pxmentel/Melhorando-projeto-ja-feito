@@ -4,7 +4,7 @@ import { useRecipes } from "@/context/RecipeContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Clock, Users, Trash2, Edit } from "lucide-react";
+import { ArrowLeft, Clock, Users, Trash2, Edit, BookOpen } from "lucide-react";
 import RecipeComments from "@/components/RecipeComments";
 import {
   AlertDialog,
@@ -25,6 +25,10 @@ export default function RecipeDetail() {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const recipe = id ? getRecipeById(id) : undefined;
+
+  const readingTime = recipe?.preparation
+    ? Math.max(1, Math.ceil(recipe.preparation.trim().split(/\s+/).length / 200))
+    : 1;
 
   const handleDelete = () => {
     if (recipe && recipe.isUserRecipe) {
@@ -94,6 +98,10 @@ export default function RecipeDetail() {
                   <span className="text-sm">{recipe.servings}</span>
                 </div>
               )}
+              <div className="flex items-center gap-1 text-muted-foreground">
+                <BookOpen className="h-4 w-4" />
+                <span className="text-sm">{readingTime} min de leitura</span>
+              </div>
             </div>
           </div>
 
